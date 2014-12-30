@@ -1,0 +1,41 @@
+{
+  "name": "js-htmlencode",
+  "version": "0.1.0",
+  "description": "A simple HTML encode / decode function for JavaScript.",
+  "main": "src/htmlencode.js",
+  "devDependencies": {
+    "tape": "~2.4.0"
+  },
+  "testling": {
+    "files": "tests/*.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6",
+      "ipad/6",
+      "android-browser/latest"
+    ]
+  },
+  "scripts": {
+    "test": "tape tests/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emn178/js-htmlencode.git"
+  },
+  "keywords": [
+    "htmlencode",
+    "htmldecode",
+    "encode",
+    "decode"
+  ],
+  "license": "MIT",
+  "author": "emn178 <emn178@gmail.com>",
+  "homepage": "https://github.com/emn178/js-htmlencode",
+  "bugs": {
+    "url": "https://github.com/emn178/js-htmlencode/issues"
+  }
+}
