@@ -1,0 +1,9 @@
+{
+  "name": "js-htmlencode",
+  "version": "0.1.1",
+  "main": ["build/htmlencode.min.js"],
+  "ignore": [
+    "samples",
+    "tests"
+  ]
+}

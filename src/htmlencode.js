@@ -1,8 +1,8 @@
 /*
- * js-htmlencode v0.1.0
+ * js-htmlencode v0.1.1
  * https://github.com/emn178/js-htmlencode
  *
- * Copyright 2014, emn178@gmail.com
+ * Copyright 2014-2015, emn178@gmail.com
  *
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
@@ -268,20 +268,16 @@
 
   var decodeEntity = function(code) {
     // name type
-    if(code.charAt(1) != '#')
-    {
+    if(code.charAt(1) != '#') {
       return HTML_ENTITIES[code] || code;
     }
     
     var n, c = code.charAt(2);
     // hex number
-    if(c == 'x' || c == 'X')
-    {
+    if(c == 'x' || c == 'X') {
       c = code.substring(3, code.length - 1);
       n = parseInt(c, 16);
-    }
-    else
-    {
+    } else {
       c = code.substring(2, code.length - 1);
       n = parseInt(c);
     }
@@ -301,8 +297,7 @@
     htmlEncode.htmlEncode = htmlEncode;
     htmlEncode.htmlDecode = htmlDecode;
     module.exports = htmlEncode;
-  }
-  else if(root) {
+  } else if(root) {
     root.htmlEncode = htmlEncode;
     root.htmlDecode = htmlDecode;
   }
