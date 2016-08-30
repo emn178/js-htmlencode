@@ -1,14 +1,19 @@
-/*
- * js-htmlencode v0.1.1
- * https://github.com/emn178/js-htmlencode
+/**
+ * [js-htmlencode]{@link https://github.com/emn178/js-htmlencode}
  *
- * Copyright 2014-2015, emn178@gmail.com
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
+ * @version 0.2.0
+ * @author Chen, Yi-Cyuan [emn178@gmail.com]
+ * @copyright Chen, Yi-Cyuan 2014-2016
+ * @license MIT
  */
-;(function(root, undefined) {
+(function (root) {
   'use strict';
+
+  var NODE_JS = typeof process == 'object' && process.versions && process.versions.node;
+  if (NODE_JS) {
+    root = global;
+  }
+  var COMMON_JS = !root.JS_HTMLENCODE_TEST && typeof module == 'object' && module.exports;
 
   var HTML_ENTITIES = {
     '&nbsp;' : '\u00A0',
@@ -266,15 +271,15 @@
     '&diams;' : '\u2666'
   };
 
-  var decodeEntity = function(code) {
+  var decodeEntity = function (code) {
     // name type
-    if(code.charAt(1) != '#') {
+    if (code.charAt(1) != '#') {
       return HTML_ENTITIES[code] || code;
     }
-    
+
     var n, c = code.charAt(2);
     // hex number
-    if(c == 'x' || c == 'X') {
+    if (c == 'x' || c == 'X') {
       c = code.substring(3, code.length - 1);
       n = parseInt(c, 16);
     } else {
@@ -284,20 +289,20 @@
     return isNaN(n) ? code : String.fromCharCode(n);
   };
 
-  var htmlEncode = function(str) {
+  var htmlEncode = function (str) {
     return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
               .replace(/</g, '&lt;').replace(/>/g, '&gt;');
   };
 
-  var htmlDecode = function(str) {
+  var htmlDecode = function (str) {
     return str.replace(/&#?\w+;/g, decodeEntity);
   };
 
-  if(typeof(module) != 'undefined') {
+  if (COMMON_JS) {
     htmlEncode.htmlEncode = htmlEncode;
     htmlEncode.htmlDecode = htmlDecode;
     module.exports = htmlEncode;
-  } else if(root) {
+  } else if (root) {
     root.htmlEncode = htmlEncode;
     root.htmlDecode = htmlDecode;
   }

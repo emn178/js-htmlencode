@@ -1,7 +1,7 @@
 {
   "name": "js-htmlencode",
-  "version": "0.1.1",
-  "main": ["build/htmlencode.min.js"],
+  "version": "0.2.0",
+  "main": ["src/htmlencode.js"],
   "ignore": [
     "samples",
     "tests"

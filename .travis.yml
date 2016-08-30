@@ -1,12 +1,12 @@
 language: node_js
 node_js:
-  - "0.11"
-  - "0.10"
-  - "0.8"
-install:
-  - npm install mocha -g
-  - npm install coveralls -g
-  - npm install mocha-lcov-reporter -g
-  - npm install
-script:
-  - npm run-script coveralls
+  - "4.1"
+  - "4.0"
+  - "0.12"
+before_install:
+  - npm install coveralls
+  - npm install mocha-lcov-reporter
+script: npm run-script coveralls
+branches:
+  only:
+    - master

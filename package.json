@@ -1,14 +1,17 @@
 {
   "name": "js-htmlencode",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A simple HTML encode / decode function for JavaScript.",
   "main": "src/htmlencode.js",
+  "typings": "index",
   "devDependencies": {
     "expect.js": "~0.3.1",
-    "jscoverage": "~0.5.9"
+    "jscoverage": "~0.5.9",
+    "mocha": "^3.0.2"
   },
   "scripts": {
     "test": "mocha tests/node-test.js -r jscoverage",
+    "report": "mocha tests/node-test.js -r jscoverage --covout=html",
     "coveralls": "mocha tests/node-test.js -R mocha-lcov-reporter -r jscoverage | coveralls"
   },
   "repository": {
