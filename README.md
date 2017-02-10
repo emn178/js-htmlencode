@@ -43,6 +43,7 @@ require(['your/path/htmlencode.js'], function (htmlEncode) {
   var htmlDecode = htmlDecode.htmlDecode;
   // ...
 });
+```
 For TypeScript
 ```TypeScript
 import { htmlEncode, htmlDecode } from 'js-htmlencode';
