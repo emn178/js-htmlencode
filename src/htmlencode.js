@@ -1,19 +1,22 @@
 /**
  * [js-htmlencode]{@link https://github.com/emn178/js-htmlencode}
  *
- * @version 0.2.0
+ * @version 0.3.0
  * @author Chen, Yi-Cyuan [emn178@gmail.com]
- * @copyright Chen, Yi-Cyuan 2014-2016
+ * @copyright Chen, Yi-Cyuan 2014-2017
  * @license MIT
  */
-(function (root) {
+/*jslint bitwise: true */
+(function () {
   'use strict';
 
-  var NODE_JS = typeof process == 'object' && process.versions && process.versions.node;
+  var root = typeof window === 'object' ? window : {};
+  var NODE_JS = !root.JS_HTMLENCODE_NO_NODE_JS && typeof process === 'object' && process.versions && process.versions.node;
   if (NODE_JS) {
     root = global;
   }
-  var COMMON_JS = !root.JS_HTMLENCODE_TEST && typeof module == 'object' && module.exports;
+  var COMMON_JS = !root.JS_HTMLENCODE_NO_COMMON_JS && typeof module === 'object' && module.exports;
+  var AMD = typeof define === 'function' && define.amd;
 
   var HTML_ENTITIES = {
     '&nbsp;' : '\u00A0',
@@ -273,13 +276,13 @@
 
   var decodeEntity = function (code) {
     // name type
-    if (code.charAt(1) != '#') {
+    if (code.charAt(1) !== '#') {
       return HTML_ENTITIES[code] || code;
     }
 
     var n, c = code.charAt(2);
     // hex number
-    if (c == 'x' || c == 'X') {
+    if (c === 'x' || c === 'X') {
       c = code.substring(3, code.length - 1);
       n = parseInt(c, 16);
     } else {
@@ -291,19 +294,25 @@
 
   var htmlEncode = function (str) {
     return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
-              .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      .replace(/</g, '&lt;').replace(/>/g, '&gt;');
   };
 
   var htmlDecode = function (str) {
     return str.replace(/&#?\w+;/g, decodeEntity);
   };
 
+  var exports = htmlEncode;
+  htmlEncode.htmlEncode = htmlEncode;
+  htmlEncode.htmlDecode = htmlDecode;
   if (COMMON_JS) {
-    htmlEncode.htmlEncode = htmlEncode;
-    htmlEncode.htmlDecode = htmlDecode;
-    module.exports = htmlEncode;
-  } else if (root) {
+    module.exports = exports;
+  } else {
     root.htmlEncode = htmlEncode;
     root.htmlDecode = htmlDecode;
+    if (AMD) {
+      define(function() {
+        return exports;
+      });
+    }
   }
-}(this));
+})();

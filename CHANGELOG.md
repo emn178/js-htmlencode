@@ -1,14 +1,25 @@
-# v0.2.0 / 2016-08-30
+# Change Log
 
-* Supported TypeScript.
-* Added unit tests to 100% coverage.
+## v0.3.0 / 2017-02-10
+### Added
+- AMD support.
 
-# v0.1.1 / 2015-01-09
+### Fixed
+- `root` is undefined in some special environment.
 
-* Update test framework.
-* Add bower package.
-* Add coveralls.
+## v0.2.0 / 2016-08-30
+### Added
+- TypeScript support.
+- unit tests to 100% coverage.
 
-# v0.1.0 / 2014-12-30
+## v0.1.1 / 2015-01-09
+### Added
+- bower package.
+- coveralls.
 
-Create project
+### Improved
+- test framework.
+
+## v0.1.0 / 2014-12-30
+### Added
+- create project.

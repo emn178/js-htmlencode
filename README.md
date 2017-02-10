@@ -36,6 +36,13 @@ Or
 var htmlEncode = require('js-htmlencode').htmlEncode;
 var htmlDecode = require('js-htmlencode').htmlDecode;
 ```
+It supports AMD:
+```JavaScript
+require(['your/path/htmlencode.js'], function (htmlEncode) {
+  var htmlEncode = htmlEncode.htmlEncode;
+  var htmlDecode = htmlDecode.htmlDecode;
+  // ...
+});
 For TypeScript
 ```TypeScript
 import { htmlEncode, htmlDecode } from 'js-htmlencode';
@@ -43,17 +50,11 @@ htmlEncode('ooo');
 htmlDecode('xxx');
 ```
 ## Example
-Code
 ```JavaScript
-htmlEncode('<a href="#">HTML Encode</a>');
-htmlDecode('&lt;a href=&quot;#&quot;&gt;HTML Encode&lt;/a&gt;');
-htmlDecode('<a href="#">HTML Encode</a>');
+htmlEncode('<a href="#">HTML Encode</a>'); // &lt;a href=&quot;#&quot;&gt;HTML Encode&lt;/a&gt;
+htmlDecode('&lt;a href=&quot;#&quot;&gt;HTML Encode&lt;/a&gt;'); // <a href="#">HTML Encode</a>
+htmlDecode('<a href="#">HTML Encode</a>'); // <a href="#">HTML Encode</a>
 ```
-Output
-
-    &lt;a href=&quot;#&quot;&gt;HTML Encode&lt;/a&gt;
-    <a href="#">HTML Encode</a>
-    <a href="#">HTML Encode</a>
 
 ## License
 The project is released under the [MIT license](http://www.opensource.org/licenses/MIT).
